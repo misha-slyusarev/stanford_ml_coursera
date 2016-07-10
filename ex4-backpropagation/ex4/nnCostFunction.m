@@ -78,7 +78,9 @@ dif = -Y .* log(h) - (1-Y) .* log(1-h);
 % For every example out of 5000, find cost
 % First, sum of i=1..m rows
 % Second, sum of k=1..K numbers
-J = (1/m) * sum(sum(dif))
+TH1 = Theta1(:, 2:end);
+TH2 = Theta2(:, 2:end);
+J = (1/m) * sum(sum(dif)) + (lambda/(2*m)) * (sum(sum(TH1 .^2)) + sum(sum(TH2 .^2)));
 
 % -------------------------------------------------------------
 
