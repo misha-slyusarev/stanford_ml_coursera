@@ -35,9 +35,12 @@ a1 = [ones(m,1) X];
 z2 = a1 * Theta1';
 a2 = [ones(m, 1) sigmoid(z2)];
 
+% Calculate third layer same way as the previous one
 z3 = a2 * Theta2';
 a3 = sigmoid(z3);
 
+% Found maximum value though the probabilities of 0 to 9 number appear,
+% and return it's index number (which is exactly the number itself (1..10))
 [mx, p] = max(a3, [], 2);
 
 % =========================================================================
