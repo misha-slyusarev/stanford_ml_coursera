@@ -89,5 +89,4 @@ J = (1/m) * sum(sum(dif)) + (lambda/(2*m)) * (sum(sum(TH1 .^2)) + sum(sum(TH2 .^
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
-
 end
