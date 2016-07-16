@@ -100,7 +100,7 @@ delta2 = delta3*Theta2(:,2:end) .* sigmoidGradient(Z2); % 5000 x 25
 D1 = delta2'*A1; % 25 x 401
 D2 = delta3'*A2; % 10 x 25
 
-% Loop version of backpropagation (buggy)
+% Loop version of backpropagation (certanly buggy)
 % for t = 1:m
 %
 %   % 1. Take first example out of 5000 and
@@ -127,8 +127,12 @@ D2 = delta3'*A2; % 10 x 25
 %   D2 = D2 + delta3' * a2;
 % end
 
-Theta1_grad = D1 / m;
-Theta2_grad = D2 / m;
+% Set the 1st column of all rows to 0
+Theta1(:, 1) = 0;
+Theta2(:, 1) = 0;
+
+Theta1_grad = D1 / m + (lambda / m) * Theta1;
+Theta2_grad = D2 / m + (lambda / m) * Theta2;
 
 %Theta1_grad = Delta1 / m %+ lambda*[zeros(hidden_layer_size , 1) Theta1(:,2:end)] / m;
 %Theta2_grad = Delta2 / m %+ lambda*[zeros(num_labels , 1) Theta2(:,2:end)] / m;
